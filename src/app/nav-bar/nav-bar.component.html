@@ -1,0 +1,85 @@
+<!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">IOT Dashboard</a>
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/home']">Iot Dashboard</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#" [routerLink]="['/home']" routerLinkActive="active"
+            >Device</a
+          >
+        </li>
+        <li>
+          <a href="#" [routerLink]="['/add-device']" routerLinkActive="active"
+            >Add Device</a
+          >
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="isAuthenticated">
+          <a href="javascrpt:" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" [routerLink]="['/home']">Dashboard</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul *ngIf="isAuthenticated" class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Device <span class="caret"></span></a>
+          <ul class="dropdown-menu">         
+            <li><a href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="glyphicon glyphicon-phone"></span> Soil Sensor</a></li>
+            <li><a href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="glyphicon glyphicon-phone"></span> Weather Sensor</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="glyphicon glyphicon-phone"></span> Device</a>
+        </li>
+        <li>
+          <a href="#" [routerLink]="['/add-device']" routerLinkActive="active"
+            ><span class="glyphicon glyphicon-wrench"></span> Add Device</a
+          >
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="isAuthenticated">
+          <a href="javascrpt:" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+        </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>

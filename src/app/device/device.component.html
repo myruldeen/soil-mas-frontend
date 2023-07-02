@@ -1,0 +1,60 @@
+<div class="container">
+  <br>
+  <div *ngIf="!device">
+    <h3 class="text-center">Loading!</h3>
+  </div>
+  <div class="row" *ngIf="lastRecord">
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{device.name}}
+          </h3>
+          <span class="pull-right btn-click">
+            <i class="fa fa-chevron-circle-up"></i>
+          </span>
+        </div>
+        <div class="clearfix"></div>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tr>
+              <td>Toggle LED</td>
+              <td>
+                <ui-switch [(ngModel)]="toggleState" (change)="toggleChange($event)"></ui-switch>
+              </td>
+            </tr>
+            <tr *ngIf="lastRecord">
+              <td>Temperature</td>
+              <td>{{lastRecord.data.t}}</td>
+            </tr>
+            <tr *ngIf="lastRecord">
+              <td>Humidity</td>
+              <td>{{lastRecord.data.h}}</td>
+            </tr>
+            <tr *ngIf="lastRecord">
+              <td>Received At</td>
+              <td>{{lastRecord.createdAt | date: 'medium'}}</td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="col-md-10 col-md-offset-1" *ngIf="lineChartData.length > 0">
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+          [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="lastRecord">
+    <div class="col-md-4">
+      <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="lastRecord.data.t" [centralLabel]="centralLabel"
+        [options]="options" [name]="tempLbl" [bottomLabel]="lastRecord.data.t"></rg-gauge-chart>
+    </div>
+    <div class="col-md-4">
+      <rg-gauge-chart [canvasWidth]="canvasWidth" [needleValue]="lastRecord.data.h" [centralLabel]="centralLabel"
+        [options]="options" [name]="humdLbl" [bottomLabel]="lastRecord.data.h"></rg-gauge-chart>
+    </div>
+  </div>
+</div>
